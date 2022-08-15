@@ -13,17 +13,17 @@ const addMovie = asyncHandler(async (req, res) => {
     if (movie) {
         res.status(400)
         throw new Error('Movie already exists')
+    } else {
+        const movieObject = new Movie({
+            movieName : movieName,
+            rating: rating,
+            cast: cast,
+            genre: genre,
+            releaseDate: releaseDate,
+        });
+        const result = await movieObject.save()
+        res.status(201).json({id: result._id})
     }
-    
-    const movieObject = new Movie({
-        movieName : movieName,
-        rating: rating,
-        cast: cast,
-        genre: genre,
-        releaseDate: releaseDate,
-    });
-    const result = await movieObject.save() 
-    res.status(201).json({id: result._id})
 })
 
 // @desc    All Movie
@@ -35,8 +35,9 @@ const allMovie = asyncHandler(async (req, res) => {
     res.status(200)
     if (movie) {
         res.json(movie);
+    } else {
+        res.json({})
     }
-    res.json({})
 })
 
 // @desc    Update Movie
