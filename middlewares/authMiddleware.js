@@ -41,7 +41,7 @@ export const signinHandler = asyncHandler(async(req, res) => {
     sessions[sessionToken] = session
 
     res.cookie("session_token", sessionToken, { expires: expiresAt })
-    res.status(200).json({ toDo: "For Further private requests, please set the `Cookie` headers to the Cookie value present in this response "})
+    res.status(200).json({ toDo: "For Further private requests, please set the `Set-Cookie` headers value to the Set-Cookie value present in this response "})
     res.end()
 })
 
