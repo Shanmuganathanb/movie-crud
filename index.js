@@ -4,10 +4,13 @@ import connectDB from './config/db.js'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
+import dotenv from 'dotenv'
 
 import welcomeRoute from './routes/welcomeRoute.js'
 import signInRoute from './routes/signInRoute.js'
 import movieRoutes from './routes/movieRoutes.js'
+
+dotenv.config()
 
 connectDB()
 
