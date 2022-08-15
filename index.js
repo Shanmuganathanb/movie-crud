@@ -18,13 +18,10 @@ app.use(cors())
 
 // app.use(express.json())
 
-app.use('/welcome', welcomeRoute)
 app.use('/login', signInRoute)
 app.use('/movie', movieRoutes)
 
-app.get('/', (req, res) => {
-  res.send('API is running....')
-})
+app.get('/', welcomeRoute)
 
 app.use(notFound)
 app.use(errorHandler)
